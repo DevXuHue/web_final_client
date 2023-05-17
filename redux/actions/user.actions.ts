@@ -1,6 +1,9 @@
 import axiosAdminClient from "@/apis";
 import {
   CLEAR_ERRORS,
+  GET_CUSTOMER_FAILER,
+  GET_CUSTOMER_REQUEST,
+  GET_CUSTOMER_SUCCESS,
   LOAD_USER_FAIL,
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
@@ -9,6 +12,9 @@ import {
   LOGIN_SUCCESS,
   LOGOUT_FAILURE,
   LOGOUT_SUCCESS,
+  REGISTER_USER_FAILURE,
+  REGISTER_USER_REQUEST,
+  REGISTER_USER_SUCCESS,
 } from "@/constants";
 import { Dispatch } from "redux";
 
@@ -17,7 +23,7 @@ export const login =
     try {
       dispatch({ type: LOGIN_REQUEST });
 
-      const { data } = await axiosAdminClient.post("/user/login", {
+      const { data } = await axiosAdminClient.post("/users/login", {
         email,
         password,
       });
@@ -41,9 +47,9 @@ export const loadUser = () => async (dispatch: Dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
-    const { data } = await axiosAdminClient.get("/user/me");
+    const { data } = await axiosAdminClient.get("/users/me");
 
-    dispatch({ type: LOAD_USER_SUCCESS, payload: data.user });
+    dispatch({ type: LOAD_USER_SUCCESS, payload: data.metadata });
   } catch (error) {
     dispatch({
       type: LOAD_USER_FAIL,
@@ -55,13 +61,45 @@ export const loadUser = () => async (dispatch: Dispatch) => {
 
 export const logout = () => async (dispatch: Dispatch) => {
   try {
-    await axiosAdminClient.get(`/user/logout`);
+    await axiosAdminClient.get(`/users/logout`);
 
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
     dispatch({
       type: LOGOUT_FAILURE, // @ts-ignore
       payload: error?.response?.data?.message || "error server inteval",
+    });
+  }
+};
+
+export const getCustomer = () => async (dispatch: Dispatch) => {
+  try {
+    dispatch({ type: GET_CUSTOMER_REQUEST });
+
+    const { data } = await axiosAdminClient.get("users/admin/customers");
+
+    dispatch({ type: GET_CUSTOMER_SUCCESS, payload: data });
+  } catch (error) {
+    dispatch({
+      type: GET_CUSTOMER_FAILER,
+      // @ts-ignore
+      payload: error?.response?.data?.message || "Server interval",
+    });
+  }
+};
+
+export const register = (userData: any) => async (dispatch: Dispatch) => {
+  try {
+    dispatch({ type: REGISTER_USER_REQUEST });
+
+    const { data } = await axiosAdminClient.post(`/users/register`, userData);
+
+    dispatch({ type: REGISTER_USER_SUCCESS, payload: data.metadata });
+  } catch (error) {
+    dispatch({
+      type: REGISTER_USER_FAILURE,
+      // @ts-ignore
+      payload: error?.response?.data?.message || "register error",
     });
   }
 };

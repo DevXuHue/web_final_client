@@ -5,11 +5,23 @@ import {
   legacy_createStore as createStore,
 } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
-import { userReducer } from "./reducers";
+import {
+  userReducer,
+  createUserReducer,
+  createCategoryPostReducer,
+  getAllCategoryPostReducer,
+  getAllUserReducer,
+  getRoomTypesReducer,
+} from "./reducers";
 
 const initialState = {};
 const reducers = combineReducers({
   user: userReducer,
+  getAllUserReducer,
+  getAllCategoryPostReducer,
+  createCategoryPost: createCategoryPostReducer,
+  createUserReducer,
+  getRoomTypesReducer,
 });
 const middleware = [thunk];
 

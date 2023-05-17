@@ -1,42 +1,41 @@
-import { InputAdmin } from "@/components";
-import { CLEAR_REGISTER_USER_FAILURE, RESET_REGISTER_USER } from "@/constants";
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import LayoutAdmin from "@/layouts";
-import { register as registerFunc } from "@/redux/actions";
 import { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import { InputAdmin } from "../../components";
+import LayoutAdmin from "../../layouts";
+import { createCategoyPost } from "@/redux/actions";
 import toast from "react-hot-toast";
+import {
+  CLEAR_CREATE_CATEGORY_POST_FAIL,
+  RESET_CREATE_CATEGORY_POST,
+} from "@/constants";
 
-const register: NextPage = () => {
+const CreateNewCategoryPost: NextPage = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const { error, success } = useAppSelector((state) => state.createUserReducer);
+  const { error, success } = useAppSelector(
+    (state) => state.createCategoryPost
+  );
 
   const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [phone, setPhone] = useState<string>("");
-  const [address, setAddress] = useState<string>("");
-  const [cmnd, setCmnd] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [shortDescription, setShortDescription] = useState<string>("");
   const [images, setImages] = useState<ArrayBuffer | string>("");
   const [imagesPreview, setImagePreview] = useState<ArrayBuffer | string>("");
 
-  const handleFormSubmitNewCustomer = (e: FormEvent<HTMLFormElement>) => {
+  const handleFormSubmitNewProduct = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const id = toast.loading("submit...");
     const formData = new FormData();
-    formData.set("username", name);
-    formData.set("email", email);
-    formData.set("password", password);
-    formData.set("phone", phone);
-    formData.set("cmnd", cmnd);
-    formData.set("address", address);
-    formData.append("avatar", images as string);
+    formData.set("title", name);
+    formData.set("description", description);
+    formData.set("shortDescription", shortDescription);
+    formData.append("thumbnail", images as string);
 
     // @ts-ignore
-    dispatch(registerFunc(formData));
+    dispatch(createCategoyPost(formData));
     toast.remove(id);
   };
 
@@ -65,67 +64,50 @@ const register: NextPage = () => {
   useEffect(() => {
     if (error) {
       toast.error(error);
-      dispatch({ type: CLEAR_REGISTER_USER_FAILURE });
+      dispatch({ type: CLEAR_CREATE_CATEGORY_POST_FAIL });
+      router.push("/");
     }
   }, [error]);
-
   useEffect(() => {
     if (success) {
       toast.success("success create category post");
       dispatch({
-        type: RESET_REGISTER_USER,
+        type: RESET_CREATE_CATEGORY_POST,
         payload: undefined,
       });
-      router.push("/customers");
+      router.push("/categories-stream");
     }
   }, [success]);
 
   return (
     <LayoutAdmin>
       <Head>
-        <title>Register </title>
+        <title>Create Category Stream</title>
       </Head>
-      <h5 className="text-2xl font-extrabold text-gray-700">Register page</h5>
-      <form onSubmit={handleFormSubmitNewCustomer}>
+      <h5 className="text-2xl font-extrabold text-gray-700">
+        Create Category Post page
+      </h5>
+      <form onSubmit={handleFormSubmitNewProduct}>
         <div className="grid gap-3 mb-6">
           <InputAdmin
             name="title"
-            label="Name"
+            label="Name Category"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <InputAdmin
-            name="email"
-            value={email}
-            type="email"
-            label="Email"
-            onChange={(e) => setEmail(e.target.value)}
+            name="description"
+            value={description}
+            as="textarea"
+            label="Description"
+            onChange={(e) => setDescription(e.target.value)}
           />
           <InputAdmin
-            name="password"
-            value={password}
-            type="password"
-            label="Password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <InputAdmin
-            name="phone"
-            value={phone}
-            type="number"
-            label="Phone"
-            onChange={(e) => setPhone(e.target.value)}
-          />
-          <InputAdmin
-            name="address"
-            value={address}
-            label="Address"
-            onChange={(e) => setAddress(e.target.value)}
-          />
-          <InputAdmin
-            name="cmnd"
-            value={cmnd}
-            label="Cmnd"
-            onChange={(e) => setCmnd(e.target.value)}
+            name="shortDescription"
+            value={shortDescription}
+            as="textarea"
+            label="shortDescription"
+            onChange={(e) => setShortDescription(e.target.value)}
           />
           <InputAdmin
             name="images"
@@ -157,4 +139,4 @@ const register: NextPage = () => {
   );
 };
 
-export default register;
+export default CreateNewCategoryPost;

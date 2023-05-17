@@ -10,3 +10,5 @@ export { default as Select } from "./Atoms/Select";
 export { default as Input } from "./Atoms/Input";
 export { default as Checkbox } from "./Atoms/Checkbox";
 export { default as TopNav } from "./TopNav";
+export { default as Editor } from "./commom/QuillEditor";
+export { default as InputAdmin } from "./Input";

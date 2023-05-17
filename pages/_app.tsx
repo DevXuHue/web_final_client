@@ -9,6 +9,7 @@ import nprogess from "nprogress";
 import { ReactElement, ReactNode, useEffect, useState } from "react";
 import { Provider } from "react-redux";
 import "../styles/app.scss";
+import "react-quill/dist/quill.snow.css";
 
 type NextPageWithLayout = NextPage & {
   getLayout?: (page: ReactElement) => ReactNode;

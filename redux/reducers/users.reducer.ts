@@ -1,5 +1,9 @@
 import {
   CLEAR_ERRORS,
+  CLEAR_GET_CUSTOMER_FAILER,
+  GET_CUSTOMER_FAILER,
+  GET_CUSTOMER_REQUEST,
+  GET_CUSTOMER_SUCCESS,
   LOAD_USER_FAIL,
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
@@ -8,7 +12,53 @@ import {
   LOGIN_SUCCESS,
   LOGOUT_FAILURE,
   LOGOUT_SUCCESS,
+  REGISTER_USER_REQUEST,
+  REGISTER_USER_SUCCESS,
+  REGISTER_USER_FAILURE,
+  CLEAR_REGISTER_USER_FAILURE,
+  RESET_REGISTER_USER,
 } from "@/constants";
+
+export const createUserReducer = (state: any = {}, action: any) => {
+  switch (action.type) {
+    case REGISTER_USER_REQUEST:
+      return {
+        loading: true,
+        error: null,
+        newUser: null,
+        success: false,
+      };
+    case REGISTER_USER_SUCCESS:
+      return {
+        loading: false,
+        error: null,
+        newUser: action.payload,
+        success: true,
+      };
+    case REGISTER_USER_FAILURE:
+      return {
+        loading: false,
+        error: action.payload,
+        newUser: null,
+        success: false,
+      };
+    case CLEAR_REGISTER_USER_FAILURE:
+      return {
+        ...state,
+        error: null,
+      };
+    case RESET_REGISTER_USER:
+      return {
+        ...state,
+        success: false,
+        newUser: null,
+      };
+    default:
+      return {
+        ...state,
+      };
+  }
+};
 
 const userReducer = (state: any = { user: {} }, action: any) => {
   switch (action.type) {
@@ -62,3 +112,33 @@ const userReducer = (state: any = { user: {} }, action: any) => {
 };
 
 export default userReducer;
+
+export const getAllUserReducer = (state: any, action: any) => {
+  switch (action.type) {
+    case GET_CUSTOMER_REQUEST:
+      return {
+        loading: true,
+        success: false,
+        customers: null,
+      };
+    case GET_CUSTOMER_SUCCESS:
+      return {
+        loading: false,
+        success: true,
+        customers: action.payload.metadata.customer,
+      };
+    case GET_CUSTOMER_FAILER:
+      return {
+        loading: false,
+        success: false,
+        error: action.payload,
+      };
+    case CLEAR_GET_CUSTOMER_FAILER:
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return { ...state };
+  }
+};

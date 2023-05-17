@@ -39,18 +39,18 @@ export const sidebarRoutes = [
     icon: OfficeBuildingIcon,
   },
   {
-    display_name: "Lives",
-    route: "/lives",
+    display_name: "Reports",
+    route: "/reports",
     icon: QrcodeIcon,
   },
   {
-    display_name: "Orders",
-    route: "/order",
+    display_name: "Room Types",
+    route: "/room-types",
     icon: ShoppingCartIcon,
   },
   {
-    display_name: "categories-stream",
-    route: "/categories-stream",
+    display_name: "categories-post",
+    route: "/categories-post",
     icon: ViewListIcon,
   },
   {
@@ -59,14 +59,14 @@ export const sidebarRoutes = [
     icon: GiftIcon,
   },
   {
-    display_name: "inventory",
-    route: "/inventory",
+    display_name: "room",
+    route: "/room",
     icon: OfficeBuildingIcon,
   },
 
   {
-    display_name: "settings",
-    route: "/settings",
+    display_name: "register",
+    route: "/register",
     icon: CogIcon,
   },
 ];
@@ -129,4 +129,49 @@ export const FETCH_CUSTOMER_FAILURE = "FETCH_CUSTOMER_FAILURE";
 export const FETCH_CUSTOMER_REQUEST = "FETCH_CUSTOMER_REQUEST";
 export const CLEAR_ERRORS_FETCH_CUSTOMER = "CLEAR_ERRORS_FETCH_CUSTOMER";
 
+export const REGISTER_USER_REQUEST = "REGISTER_USER_REQUEST";
+export const REGISTER_USER_SUCCESS = "REGISTER_USER_SUCCESS";
+export const REGISTER_USER_FAILURE = "REGISTER_USER_FAILURE";
+export const CLEAR_REGISTER_USER_FAILURE = "CLEAR_REGISTER_USER_FAILURE";
+export const RESET_REGISTER_USER = "RESET_REGISTER_USER";
+
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+
+// CUSTOMER CONSTANTS
+export const GET_CUSTOMER_REQUEST = "GET_CUSTOMER_REQUEST";
+export const GET_CUSTOMER_SUCCESS = "GET_CUSTOMER_SUCCESS";
+export const GET_CUSTOMER_FAILER = "GET_CUSTOMER_FAILER";
+export const CLEAR_GET_CUSTOMER_FAILER = "CLEAR_GET_CUSTOMER_FAILER";
+
+// TODO:CATEGORY_POST
+
+export const CREATE_CATEGORY_POST_REQUEST = "CREATE_CATEGORY_POST_REQUEST";
+export const CREATE_CATEGORY_POST_SUCCESS = "CREATE_CATEGORY_POST_SUCCESS";
+export const CREATE_CATEGORY_POST_FAIL = "CREATE_CATEGORY_POST_FAIL";
+export const CLEAR_CREATE_CATEGORY_POST_FAIL =
+  "CLEAR_CREATE_CATEGORY_POST_FAIL";
+export const RESET_CREATE_CATEGORY_POST = "RESET_CREATE_CATEGORY_POST";
+
+export const GET_ALL_CATEGORY_POST_REQUEST = "GET_ALL_CATEGORY_POST_REQUEST";
+export const GET_ALL_CATEGORY_POST_SUCCESS = "GET_ALL_CATEGORY_POST_SUCCESS";
+export const GET_ALL_CATEGORY_POST_ERROR = "GET_ALL_CATEGORY_POST_ERROR";
+export const CLEAR_GET_ALL_CATEGORY_POST_ERROR =
+  "CLEAR_GET_ALL_CATEGORY_POST_ERROR";
+
+export const GET_CATEGORY_POST_REQUEST = "GET_CATEGORY_POST_REQUEST";
+export const GET_CATEGORY_POST_SUCCESS = "GET_CATEGORY_POST_SUCCESS";
+export const GET_CATEGORY_POST_ERRROR = "GET_CATEGORY_POST_ERRROR";
+export const CLEAR_GET_CATEGORY_POST_ERRROR = "CLEAR_GET_CATEGORY_POST_ERRROR";
+
+export const UPDATE_CATEGORY_POST_REQUEST = "UPDATE_CATEGORY_POST_REQUEST";
+export const UPDATE_CATEGORY_POST_SUCCESS = "UPDATE_CATEGORY_POST_SUCCESS";
+export const UPDATE_CATEGORY_POST_ERROR = "UPDATE_CATEGORY_POST_ERROR";
+export const CLEAR_UPDATE_CATGEORY_POST_ERROR =
+  "CLEAR_UPDATE_CATGEORY_POST_ERROR";
+export const RESET_UPDATE_CATEGORY_POST = "RESET_UPDATE_CATEGORY_POST";
+
+// ROOM TYPE
+export const GET_ALL_ROOM_TYPE_REQUEST = "GET_ALL_ROOM_TYPE_REQUEST";
+export const GET_ALL_ROOM_TYPE_SUCCESS = "GET_ALL_ROOM_TYPE_SUCCESS";
+export const GET_ALL_ROOM_TYPE_ERROR = "GET_ALL_ROOM_TYPE_ERROR";
+export const CLEAR_GET_ALL_ROOM_TYPE = "CLEAR_GET_ALL_ROOM_TYPE";
