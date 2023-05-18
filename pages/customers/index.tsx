@@ -151,9 +151,14 @@ const Customers = () => {
                                 <td className="text-md text-gray-900 font-semibold px-2 py-1 whitespace-nowrap">
                                   <button
                                     type="button"
+                                    onClick={() =>
+                                      router.push(
+                                        "/customer/update/" + item._id
+                                      )
+                                    }
                                     className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-md px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                                   >
-                                    Views
+                                    Update user
                                   </button>
                                 </td>
                               </tr>

@@ -12,3 +12,4 @@ export { default as Checkbox } from "./Atoms/Checkbox";
 export { default as TopNav } from "./TopNav";
 export { default as Editor } from "./commom/QuillEditor";
 export { default as InputAdmin } from "./Input";
+export { default as StatusCard } from "./StatusCard";
