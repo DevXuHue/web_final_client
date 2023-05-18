@@ -1,4 +1,3 @@
-import { PostReducer } from "./reducers/post.reducer";
 import thunk from "redux-thunk";
 import {
   applyMiddleware,
@@ -18,6 +17,9 @@ import {
   getReportTypesReducer,
   createReportTypesReducer,
   getDataIndexReducer,
+  createRoomReducer,
+  getRoomReducer,
+  PostReducer,
 } from "./reducers";
 
 const initialState = {};
@@ -34,6 +36,8 @@ const reducers = combineReducers({
   getReportReducer,
   getDataIndexReducer,
   PostReducer,
+  getRoomReducer,
+  createRoomReducer,
 });
 const middleware = [thunk];
 

@@ -15,6 +15,7 @@
     "axios": "^1.4.0",
     "class-variance-authority": "^0.6.0",
     "clsx": "^1.2.1",
+    "dayjs": "^1.11.7",
     "framer-motion": "^10.12.11",
     "lucide-react": "^0.216.0",
     "moment": "^2.29.4",

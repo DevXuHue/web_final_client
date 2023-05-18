@@ -7,6 +7,7 @@ const axiosAdminClient = axios.create({
     Accept: "application/json",
   },
   withCredentials: true,
+  timeout: 60 * 1000,
 });
 
 axiosAdminClient.interceptors.response.use(
