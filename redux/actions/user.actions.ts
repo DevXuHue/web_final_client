@@ -1,9 +1,13 @@
 import axiosAdminClient from "@/apis";
 import {
   CLEAR_ERRORS,
+  CLEAR_GET_USER_BY_ID,
+  CLEAR_UPDATE_USER,
   GET_CUSTOMER_FAILER,
   GET_CUSTOMER_REQUEST,
   GET_CUSTOMER_SUCCESS,
+  GET_USER_BY_ID_REQUEST,
+  GET_USER_BY_ID_SUCCESS,
   LOAD_USER_FAIL,
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
@@ -15,6 +19,8 @@ import {
   REGISTER_USER_FAILURE,
   REGISTER_USER_REQUEST,
   REGISTER_USER_SUCCESS,
+  UPDATE_POST_SUCCES,
+  UPDATE_USER_REQUEST,
 } from "@/constants";
 import { Dispatch } from "redux";
 
@@ -103,3 +109,35 @@ export const register = (userData: any) => async (dispatch: Dispatch) => {
     });
   }
 };
+
+export const getUser = (id: string) => async (dispatch: Dispatch) => {
+  try {
+    dispatch({ type: GET_USER_BY_ID_REQUEST });
+    const { data } = await axiosAdminClient.get(`/users/admin/customers/${id}`);
+    dispatch({ type: GET_USER_BY_ID_SUCCESS, payload: data.metadata });
+  } catch (error) {
+    dispatch({
+      type: CLEAR_GET_USER_BY_ID,
+      // @ts-ignore
+      payload: error?.response?.data?.message || "register error",
+    });
+  }
+};
+
+export const updateUser =
+  (formData: any, id: string) => async (dispatch: Dispatch) => {
+    try {
+      dispatch({ type: UPDATE_USER_REQUEST });
+      const { data } = await axiosAdminClient.put(
+        `/users/admin/customers/${id}`,
+        formData
+      );
+      dispatch({ type: UPDATE_POST_SUCCES, payload: data.metadata });
+    } catch (error) {
+      dispatch({
+        type: CLEAR_UPDATE_USER,
+        // @ts-ignore
+        payload: error?.response?.data?.message || "register error",
+      });
+    }
+  };

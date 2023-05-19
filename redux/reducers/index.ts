@@ -8,3 +8,4 @@ export * from "./common.reducer";
 export { default as getDataIndexReducer } from "./common.reducer";
 export * from "./post.reducer";
 export * from "./rooms.reducer";
+export * from "./utils.reducer";

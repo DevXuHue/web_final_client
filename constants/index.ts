@@ -54,11 +54,6 @@ export const sidebarRoutes = [
     icon: ViewListIcon,
   },
   {
-    display_name: "streammers",
-    route: "/streammers",
-    icon: GiftIcon,
-  },
-  {
     display_name: "room",
     route: "/room",
     icon: OfficeBuildingIcon,
@@ -67,6 +62,11 @@ export const sidebarRoutes = [
   {
     display_name: "register",
     route: "/register",
+    icon: CogIcon,
+  },
+  {
+    display_name: "bills",
+    route: "/bills",
     icon: CogIcon,
   },
 ];
@@ -142,6 +142,17 @@ export const GET_CUSTOMER_REQUEST = "GET_CUSTOMER_REQUEST";
 export const GET_CUSTOMER_SUCCESS = "GET_CUSTOMER_SUCCESS";
 export const GET_CUSTOMER_FAILER = "GET_CUSTOMER_FAILER";
 export const CLEAR_GET_CUSTOMER_FAILER = "CLEAR_GET_CUSTOMER_FAILER";
+
+export const GET_USER_BY_ID_REQUEST = "GET_USER_BY_ID_REQUEST";
+export const GET_USER_BY_ID_SUCCESS = "GET_USER_BY_ID_SUCCESS";
+export const GET_USER_BY_ID_ERROR = "GET_USER_BY_ID_ERROR";
+export const CLEAR_GET_USER_BY_ID = "CLEAR_GET_USER_BY_ID";
+
+export const UPDATE_USER_REQUEST = "UPDATE_USER_REQUEST";
+export const UPDATE_USER_SUCCESS = "UPDATE_USER_SUCCESS";
+export const UPDATE_USER_ERROR = "UPDATE_USER_ERROR";
+export const CLEAR_UPDATE_USER = "CLEAR_UPDATE_USER";
+export const RESET_UPDATE_USER = "RESET_UPDATE_USER";
 
 // TODO:CATEGORY_POST
 
@@ -229,3 +240,38 @@ export const CREATE_ROOM_SUCCESS = "CREATE_ROOM_SUCCESS";
 export const CREATE_ROOM_ERROR = "CREATE_ROOM_ERROR";
 export const RESET_CREATE_ROOM = "RESET_CREATE_ROOM";
 export const CLEAR_CREATE_ROOM = "CLEAR_CREATE_ROOM";
+
+export const UPDATE_ROOM_REQUEST = "UPDATE_ROOM_REQUEST";
+export const UPDATE_ROOM_SUCCESS = "UPDATE_ROOM_SUCCESS";
+export const UPDATE_ROOM_ERROR = "UPDATE_ROOM_ERROR";
+export const CLEAR_UPDATE_ROOM_ERROR = "CLEAR_UPDATE_ROOM_ERROR";
+export const RESET_UPDATE_ROOM = "RESET_UPDATE_ROOM";
+
+export const GET_ROOM_BY_ID_REQUEST = "GET_ROOM_BY_ID_REQUEST";
+export const GET_ROOM_BY_ID_SUCCESS = "GET_ROOM_BY_ID_SUCCESS";
+export const GET_ROOM_BY_ID_ERROR = "GET_ROOM_BY_ID_ERROR";
+export const CLEAR_GET_ROOM_BY_ID = "CLEAR_GET_ROOM_BY_ID";
+
+// UTILS
+
+export const GET_ALL_UTILS_REQUEST = "GET_ALL_UTILS_REQUEST";
+export const GET_ALL_UTILS_SUCCESS = "GET_ALL_UTILS_SUCCESS";
+export const GET_ALL_UTILS_ERROR = "GET_ALL_UTILS_ERROR";
+export const CLEAR_GET_ALL_UTILS = "CLEAR_GET_ALL_UTILS";
+
+export const GET_UTIL_REQUEST = "GET_UTIL_REQUEST";
+export const GET_UTIL_SUCCESS = "GET_UTIL_SUCCESS";
+export const GET_UTIL_ERROR = "GET_UTIL_ERROR";
+export const CLEAR_GET_UTIL = "CLEAR_GET_UTIL";
+
+export const CREATE_UTIL_REQUEST = "CREATE_UTIL_REQUEST";
+export const CREATE_UTIL_SUCCESS = "CREATE_UTIL_SUCCESS";
+export const CREATE_UTIL_ERROR = "CREATE_UTIL_ERROR";
+export const CLEAR_CREATE_UTIL = "CLEAR_CREATE_UTIL";
+export const RESET_CREATE_UTIL = "RESET_CREATE_UTIL";
+
+export const UPDATE_UTIL_REQUEST = "UPDATE_UTIL_REQUEST";
+export const UPDATE_UTIL_SUCCESS = "UPDATE_UTIL_SUCCESS";
+export const UPDATE_UTIL_ERROR = "UPDATE_UTIL_ERROR";
+export const CLEAR_UPDATE_UTIL = "CLEAR_UPDATE_UTIL";
+export const RESET_UPDATE_UTIL = "RESET_UPDATE_UTIL";

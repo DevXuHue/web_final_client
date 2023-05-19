@@ -81,24 +81,6 @@ const Room = () => {
                             scope="col"
                             className="text-sm font-medium text-gray-900 px-2 py-1 text-left"
                           >
-                            To
-                          </th>
-                          <th
-                            scope="col"
-                            className="text-sm font-medium text-gray-900 px-2 py-1 text-left"
-                          >
-                            From
-                          </th>
-                          <th
-                            scope="col"
-                            className="text-sm font-medium text-gray-900 px-2 py-1 text-left"
-                          >
-                            user_booking
-                          </th>
-                          <th
-                            scope="col"
-                            className="text-sm font-medium text-gray-900 px-2 py-1 text-left"
-                          >
                             acreage
                           </th>
                           <th
@@ -149,15 +131,6 @@ const Room = () => {
                                 {item?.description}
                               </td>
                               <td className="text-md text-gray-900 font-semibold px-2 py-1 whitespace-nowrap">
-                                {item?.to}
-                              </td>
-                              <td className="text-md text-gray-900 font-semibold px-2 py-1 whitespace-nowrap">
-                                {item?.from}
-                              </td>
-                              <td className="text-md text-gray-900 font-semibold px-2 py-1 whitespace-nowrap">
-                                {item?.user_booking}
-                              </td>
-                              <td className="text-md text-gray-900 font-semibold px-2 py-1 whitespace-nowrap">
                                 {item?.info.acreage}
                               </td>
                               <td className="text-md text-gray-900 font-semibold px-2 py-1 whitespace-nowrap">
@@ -171,10 +144,13 @@ const Room = () => {
                               </td>
                               <td className="text-md text-gray-900 font-semibold px-2 py-1 whitespace-nowrap">
                                 <button
+                                  onClick={() =>
+                                    router.push(`/room/update/${item._id}`)
+                                  }
                                   type="button"
                                   className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-md px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                                 >
-                                  Views
+                                  Update
                                 </button>
                               </td>
                             </tr>

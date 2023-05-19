@@ -6,3 +6,4 @@ export * from "./report.actions";
 export * from "./common.reducer";
 export * from "./posts.action";
 export * from "./rooms.actions";
+export * from "./util.actions";

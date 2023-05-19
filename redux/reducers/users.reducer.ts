@@ -17,6 +17,15 @@ import {
   REGISTER_USER_FAILURE,
   CLEAR_REGISTER_USER_FAILURE,
   RESET_REGISTER_USER,
+  GET_USER_BY_ID_REQUEST,
+  GET_USER_BY_ID_SUCCESS,
+  GET_USER_BY_ID_ERROR,
+  CLEAR_GET_USER_BY_ID,
+  UPDATE_USER_REQUEST,
+  UPDATE_POST_SUCCES,
+  UPDATE_POST_ERROR,
+  CLEAR_UPDATE_USER,
+  RESET_UPDATE_USER,
 } from "@/constants";
 
 export const createUserReducer = (state: any = {}, action: any) => {
@@ -137,6 +146,78 @@ export const getAllUserReducer = (state: any, action: any) => {
       return {
         ...state,
         error: null,
+      };
+    default:
+      return { ...state };
+  }
+};
+
+export const getUserReducer = (state: any = {}, action: any) => {
+  switch (action.type) {
+    case GET_USER_BY_ID_REQUEST:
+      return {
+        loading: true,
+        success: false,
+        customer: null,
+        error: null,
+      };
+    case GET_USER_BY_ID_SUCCESS:
+      return {
+        loading: false,
+        success: true,
+        customer: action.payload,
+        error: null,
+      };
+    case GET_USER_BY_ID_ERROR:
+      return {
+        loading: false,
+        error: action.payload,
+        success: false,
+        customer: null,
+      };
+    case CLEAR_GET_USER_BY_ID:
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return { ...state };
+  }
+};
+
+export const updateUserReducer = (state: any = {}, action: any) => {
+  switch (action.type) {
+    case UPDATE_USER_REQUEST:
+      return {
+        loading: true,
+        success: false,
+        newUser: null,
+        error: null,
+      };
+    case UPDATE_POST_SUCCES:
+      return {
+        loading: false,
+        success: true,
+        newUser: action.payload,
+        error: null,
+      };
+    case UPDATE_POST_ERROR:
+      return {
+        loading: false,
+        success: false,
+        error: action.payload,
+      };
+    case CLEAR_UPDATE_USER:
+      return {
+        ...state,
+        error: null,
+      };
+    case RESET_UPDATE_USER:
+      return {
+        ...state,
+        error: null,
+        newUser: null,
+        success: null,
       };
     default:
       return { ...state };

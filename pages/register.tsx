@@ -2,14 +2,12 @@ import { InputAdmin } from "@/components";
 import { CLEAR_REGISTER_USER_FAILURE, RESET_REGISTER_USER } from "@/constants";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import LayoutAdmin from "@/layouts";
-import { register as registerFunc } from "@/redux/actions";
-import { DatePicker } from "antd";
+import { getRooms, register as registerFunc } from "@/redux/actions";
 import { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import dayjs, { Dayjs } from "dayjs";
 
 const register: NextPage = () => {
   const dispatch = useAppDispatch();
@@ -21,8 +19,6 @@ const register: NextPage = () => {
   const [password, setPassword] = useState<string>("");
   const [phone, setPhone] = useState<string>("");
   const [address, setAddress] = useState<string>("");
-  const [from, setForm] = useState<Dayjs | null>(dayjs(new Date(Date.now())));
-  const [to, setTo] = useState<Dayjs | null>(dayjs(new Date(Date.now())));
   const [cmnd, setCmnd] = useState<string>("");
   const [images, setImages] = useState<ArrayBuffer | string>("");
   const [imagesPreview, setImagePreview] = useState<ArrayBuffer | string>("");
@@ -38,8 +34,6 @@ const register: NextPage = () => {
     formData.set("cmnd", cmnd);
     formData.set("address", address);
     formData.append("avatar", images as string);
-    formData.append("to", to?.toJSON() as string);
-    formData.append("from", from?.toJSON() as string);
 
     // @ts-ignore
     dispatch(registerFunc(formData));
@@ -85,6 +79,11 @@ const register: NextPage = () => {
       router.push("/customers");
     }
   }, [success]);
+
+  useEffect(() => {
+    // @ts-ignore
+    dispatch(getRooms());
+  }, []);
 
   return (
     <LayoutAdmin>
@@ -134,24 +133,12 @@ const register: NextPage = () => {
             onChange={(e) => setCmnd(e.target.value)}
           />
           <InputAdmin
-            name="rooms"
-            value={cmnd}
-            label="Rooms"
-            onChange={(e) => setCmnd(e.target.value)}
-          />
-          <InputAdmin
             name="images"
             type="file"
             value={images as string}
             onChange={handleDataChange}
             label="Images"
           />
-          <DatePicker
-            size={"middle"}
-            value={from}
-            onChange={(e) => setForm(e)}
-          />
-          <DatePicker size={"middle"} value={to} onChange={(e) => setTo(e)} />
           <div className="flex gap-2 items-center justify-center">
             {imagesPreview && (
               //@ts-ignore

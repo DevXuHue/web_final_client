@@ -94,7 +94,7 @@ const InputAdmin: React.FC<InputAdminProps> = ({
           {dataSelect
             ? dataSelect.map((data: any) => (
                 <option key={data.name} value={data._id}>
-                  {data.name}
+                  {data.name || data.title}
                 </option>
               ))
             : []}
