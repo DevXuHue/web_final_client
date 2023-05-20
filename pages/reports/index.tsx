@@ -1,3 +1,4 @@
+import axiosAdminClient from "@/apis";
 import { Loading } from "@/components";
 import { CLEAR_GET_ALL_REPORT_ERROR } from "@/constants";
 import { useAppDispatch, useAppSelector } from "@/hooks";
@@ -15,6 +16,21 @@ const ReportManagePage = () => {
   const { loading, reports, error } = useAppSelector(
     (state) => state.getReportReducer
   );
+
+  const handleCheck = async (id: string) => {
+    try {
+      const { data } = await axiosAdminClient.post("/report/check", { id });
+      if (data?.metadata) {
+        toast.success("success");
+        // @ts-ignore
+        dispatch(getAllReports());
+      } else {
+        toast.error("update error");
+      }
+    } catch (error) {
+      toast.error("update error");
+    }
+  };
 
   useEffect(() => {
     if (error) {
@@ -146,7 +162,7 @@ const ReportManagePage = () => {
                                 {item?.phoneConnect}
                               </td>
                               <td className="text-md text-gray-900 font-semibold px-2 py-1 whitespace-nowrap">
-                                {item?.isCheck}
+                                {item?.isCheck ? "True" : "false"}
                               </td>
                               <td className="text-md text-gray-900 font-semibold px-2 py-1 whitespace-nowrap">
                                 {item?.type}
@@ -156,10 +172,12 @@ const ReportManagePage = () => {
                               </td>
                               <td className="text-md text-gray-900 font-semibold px-2 py-1 whitespace-nowrap">
                                 <button
+                                  disabled={item?.isCheck}
+                                  onClick={() => handleCheck(item?._id)}
                                   type="button"
-                                  className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-md px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+                                  className="text-white disabled:opacity-50 disabled:cursor-not-allowed bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-md px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
                                 >
-                                  Views
+                                  Check
                                 </button>
                               </td>
                             </tr>
@@ -175,12 +193,6 @@ const ReportManagePage = () => {
                 </div>
               </div>
             </div>
-            <button
-              onClick={() => router.push("/room-types/new")}
-              className="mt-5 text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-md px-5 py-2.5 text-center mr-2 mb-2"
-            >
-              Create new
-            </button>
           </div>
         </LayoutAdmin>
       )}

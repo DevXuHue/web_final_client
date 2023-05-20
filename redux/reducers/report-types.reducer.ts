@@ -1,5 +1,6 @@
 import {
   CLEAR_CREATE_REPORT_TYPE_ERROR,
+  CLEAR_GET_ALL_REPORT_TYPE,
   CLEAR_GET_ALL_ROOM_TYPE,
   CREATE_REPORT_TYPE_ERROR,
   CREATE_REPORT_TYPE_REQUEST,
@@ -30,7 +31,7 @@ export const getReportTypesReducer = (state: any = {}, action: any) => {
         error: action.payload,
         report_types: null,
       };
-    case CLEAR_GET_ALL_ROOM_TYPE:
+    case CLEAR_GET_ALL_REPORT_TYPE:
       return {
         ...state,
         error: null,

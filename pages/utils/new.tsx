@@ -62,7 +62,7 @@ const NewUtils: NextPage = () => {
     formData.set("body", description);
     formData.set("price", level);
     formData.set("image", images as string);
-    formData.set("authorId", categoryId);
+    formData.set("categoriesId", categoryId);
 
     // @ts-ignore
     dispatch(createUtil(formData));
