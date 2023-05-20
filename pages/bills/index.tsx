@@ -1,12 +1,7 @@
-import LayoutAdmin from "@/layouts";
 import React from "react";
 
 const Bills = () => {
-  return (
-    <LayoutAdmin>
-      <div>Bills</div>;
-    </LayoutAdmin>
-  );
+  return <div>Bills</div>;
 };
 
 export default Bills;

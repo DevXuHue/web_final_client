@@ -69,6 +69,11 @@ export const sidebarRoutes = [
     route: "/bills",
     icon: CogIcon,
   },
+  {
+    display_name: "utils",
+    route: "/utils",
+    icon: CogIcon,
+  },
 ];
 
 export const userMenu = [

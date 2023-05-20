@@ -44,7 +44,7 @@ export const getUtil = (id: string) => async (dispatch: Dispatch) => {
   }
 };
 
-export const createtil = (formData: any) => async (dispatch: Dispatch) => {
+export const createUtil = (formData: any) => async (dispatch: Dispatch) => {
   try {
     dispatch({ type: CREATE_UTIL_REQUEST });
     const { data } = await axiosAdminClient.post(`/util`, formData);
