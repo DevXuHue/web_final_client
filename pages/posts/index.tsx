@@ -116,8 +116,8 @@ const Posts = () => {
                               <td className="text-md text-gray-900 font-semibold px-2 py-1 whitespace-nowrap max-w-[100px] truncate">
                                 {item?.description}
                               </td>
-                              <td className="text-md text-gray-900 font-semibold px-2 py-1 whitespace-nowrap">
-                                {item?.shortDescription}
+                              <td className="text-md max-w-[100px] overflow-hidden text-gray-900 font-semibold px-2 py-1 truncate">
+                                {item?.short_description}
                               </td>
                               <td className="text-md text-gray-900 font-semibold px-2 py-1 whitespace-nowrap">
                                 {parseTime(item?.createdAt, "")}

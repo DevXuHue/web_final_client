@@ -28,10 +28,19 @@ import {
   createUtilReducer,
   getUtilReducer,
   getAllUtilsReducer,
+  createCategoriesUtilReducer,
+  getAllCategoriesUtilsReducer,
+  getCategoriesUtilReducer,
+  updateCategiesUtilReducer,
+  getAllUtilsByCategoriesReducer,
 } from "./reducers";
 
 const initialState = {};
 const reducers = combineReducers({
+  getCategoriesUtilReducer,
+  updateCategiesUtilReducer,
+  getAllCategoriesUtilsReducer,
+  createCategoriesUtilReducer,
   user: userReducer,
   getAllUserReducer,
   getAllCategoryPostReducer,
@@ -54,6 +63,7 @@ const reducers = combineReducers({
   createUtilReducer,
   getUtilReducer,
   getAllUtilsReducer,
+  getAllUtilsByCategoriesReducer,
 });
 const middleware = [thunk];
 

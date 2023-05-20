@@ -1,27 +1,26 @@
+import {
+  CLEAR_CREATE_CATEGORIES_UTIL,
+  RESET_CREATE_CATEGORIES_UTIL,
+} from "@/constants";
 import { useAppDispatch, useAppSelector } from "@/hooks";
+import { createCategoriesUtil } from "@/redux/actions/categories-utils.action";
 import { NextPage } from "next";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { ChangeEvent, FormEvent, useEffect, useState } from "react";
-import { InputAdmin } from "../../components";
-import LayoutAdmin from "../../layouts";
-import { createCategoyPost } from "@/redux/actions";
 import toast from "react-hot-toast";
-import {
-  CLEAR_CREATE_CATEGORY_POST_FAIL,
-  RESET_CREATE_CATEGORY_POST,
-} from "@/constants";
+import { InputAdmin } from "@/components";
+import LayoutAdmin from "@/layouts";
 
-const CreateNewCategoryPost: NextPage = () => {
+const CreateNewCategoriesUtils: NextPage = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const { error, success } = useAppSelector(
-    (state) => state.createCategoryPost
+    (state) => state.createCategoriesUtilReducer
   );
 
   const [name, setName] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const [shortDescription, setShortDescription] = useState<string>("");
   const [images, setImages] = useState<ArrayBuffer | string>("");
   const [imagesPreview, setImagePreview] = useState<ArrayBuffer | string>("");
 
@@ -31,11 +30,10 @@ const CreateNewCategoryPost: NextPage = () => {
     const formData = new FormData();
     formData.set("title", name);
     formData.set("description", description);
-    formData.set("shortDescription", shortDescription);
     formData.set("thumbnail", images as string);
 
     // @ts-ignore
-    dispatch(createCategoyPost(formData));
+    dispatch(createCategoriesUtil(formData));
     toast.remove(id);
   };
 
@@ -64,28 +62,28 @@ const CreateNewCategoryPost: NextPage = () => {
   useEffect(() => {
     if (error) {
       toast.error(error);
-      dispatch({ type: CLEAR_CREATE_CATEGORY_POST_FAIL });
-      router.push("/");
+      dispatch({ type: CLEAR_CREATE_CATEGORIES_UTIL });
     }
   }, [error]);
+
   useEffect(() => {
     if (success) {
-      toast.success("success create category post");
+      toast.success("success create categories utils...");
       dispatch({
-        type: RESET_CREATE_CATEGORY_POST,
+        type: RESET_CREATE_CATEGORIES_UTIL,
         payload: undefined,
       });
-      router.push("/categories-stream");
+      router.push("/categories-utils");
     }
   }, [success]);
 
   return (
     <LayoutAdmin>
       <Head>
-        <title>Create Category Stream</title>
+        <title>Create Category Utils</title>
       </Head>
       <h5 className="text-2xl font-extrabold text-gray-700">
-        Create Category Post page
+        Create Category Utils page
       </h5>
       <form onSubmit={handleFormSubmitNewProduct}>
         <div className="grid gap-3 mb-6">
@@ -101,13 +99,6 @@ const CreateNewCategoryPost: NextPage = () => {
             as="textarea"
             label="Description"
             onChange={(e) => setDescription(e.target.value)}
-          />
-          <InputAdmin
-            name="shortDescription"
-            value={shortDescription}
-            as="textarea"
-            label="shortDescription"
-            onChange={(e) => setShortDescription(e.target.value)}
           />
           <InputAdmin
             name="images"
@@ -129,7 +120,8 @@ const CreateNewCategoryPost: NextPage = () => {
           <p>{error}</p>
           <button
             type="submit"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            disabled={!images || !name || !description}
+            className="disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-700 disabled:text-white text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Submit
           </button>
@@ -139,4 +131,4 @@ const CreateNewCategoryPost: NextPage = () => {
   );
 };
 
-export default CreateNewCategoryPost;
+export default CreateNewCategoriesUtils;

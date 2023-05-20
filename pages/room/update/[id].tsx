@@ -121,6 +121,8 @@ const CreateRoomTypes: NextPage = () => {
     if (id) dispatch(getOneRoom(id));
   }, [id]);
 
+  console.log(utilities);
+
   useEffect(() => {
     if (room) {
       setName(room?.title);
@@ -129,7 +131,8 @@ const CreateRoomTypes: NextPage = () => {
       setType(room?.type);
       setAcreage(room?.info?.acreage);
       setAddress(room?.info?.address);
-      setPhoneConnect(room?.info?.utilities);
+      setPhoneConnect(room?.info?.phoneConnect);
+      setUtilities(room?.info?.utilities);
       setImagePreview(room?.image?.url);
       setBody(room?.body);
     }
@@ -207,6 +210,7 @@ const CreateRoomTypes: NextPage = () => {
 
               <label>utilities</label>
               <Radio
+                checked={utilities}
                 value={utilities}
                 onChange={(e) => setUtilities(e.target.checked)}
               />
