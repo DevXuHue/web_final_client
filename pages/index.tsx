@@ -47,7 +47,7 @@ const Home: NextPage = () => {
               Admin Page
             </h3>
             <p className="text-base text-gray-400 mb-2 mt-2">
-              web - livestream - hutech
+              K-TOWER
             </p>
             <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-x-4 mt-2">
               <div

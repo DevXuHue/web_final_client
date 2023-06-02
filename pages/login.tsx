@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { Loading } from "../components";
+import imageDefaault from "@/assets/images/logotower.jpg";
 import { clearErrrors, login as LoginUser } from "@/redux/actions";
 
 const Login: NextPage = () => {
@@ -65,11 +66,11 @@ const Login: NextPage = () => {
                         <div className="text-center">
                           <img
                             className="mx-auto w-48 rounded-md"
-                            src="https://images.unsplash.com/photo-1478098711619-5ab0b478d6e6?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjExNzczfQ"
+                            src={imageDefaault.src}
                             alt="logo"
                           />
                           <h4 className="text-xl font-semibold mt-1 mb-12 pb-1">
-                            DB Page
+                            ADMIN Page
                           </h4>
                         </div>
                         <form onSubmit={handleLoginAdmin}>
@@ -117,16 +118,12 @@ const Login: NextPage = () => {
                           "linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);",
                       }}
                     >
-                      <div className="text-white px-4 py-6 md:p-12 md:mx-6">
+                      <div className=" px-4 py-6 md:p-12 md:mx-6">
                         <h4 className="text-xl font-semibold mb-6">
-                          Amazon for ADMIN PAGE
+                               -------WELCOME ADMIN PAGE K-TOWER------
                         </h4>
                         <p className="text-sm text-black">
-                          Lorem ipsum dolor sit amet, consectetur adipisicing
-                          elit, sed do eiusmod tempor incididunt ut labore et
-                          dolore magna aliqua. Ut enim ad minim veniam, quis
-                          nostrud exercitation ullamco laboris nisi ut aliquip
-                          ex ea commodo consequat.
+                          <img src={imageDefaault.src} />
                         </p>
                       </div>
                     </div>

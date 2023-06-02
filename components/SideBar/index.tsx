@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { sidebarRoutes } from "@/constants";
-import avatarDefault from "@/assets/images/avatar-default.gif";
+import avatarDefault from "@/assets/images/logotower.jpg";
 
 interface SidebarItemsProps {
   active: boolean;

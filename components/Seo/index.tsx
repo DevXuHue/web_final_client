@@ -4,8 +4,8 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 const defaultMeta = {
-  title: "Web streamming BPA",
-  siteName: "Web streamming BPA",
+  title: "Final Web",
+  siteName: "Final Web",
   description:
     " A starter for Next.js, Tailwind CSS, and TypeScript with Absolute Import, Seo, Link component, pre-configured with Husky",
   url: "https://github.com/",

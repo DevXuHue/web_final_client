@@ -38,7 +38,7 @@ const Room = () => {
           {" "}
           <div className="my-5 mx-5">
             <h1 className="text-3xl font-extrabold text-gray-700 mb-4">
-              Manage rooms page
+              Manage Room Page
             </h1>
             <h3 className="pl-4 border-4 border-l-gray-400 text-xl font-semibold text-gray-600 ">
               Admin Page

@@ -85,7 +85,7 @@ const CreateRoomTypes: NextPage = () => {
         <title>Create room Type</title>
       </Head>
       <h5 className="text-2xl font-extrabold text-gray-700">
-        Create room Type Post page
+        Create Types Room
       </h5>
       <form onSubmit={handleFormSubmitNewRoomTypes}>
         <div className="grid gap-3 mb-6">

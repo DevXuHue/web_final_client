@@ -59,7 +59,7 @@ const CreateReportTypes: NextPage = () => {
         <title>Create Report Type</title>
       </Head>
       <h5 className="text-2xl font-extrabold text-gray-700">
-        Create Report Type page
+        Create Types Report
       </h5>
       <form onSubmit={handleFormSubmitNewRoomTypes}>
         <div className="grid gap-3 mb-6">

@@ -80,10 +80,10 @@ const CreateNewCategoriesUtils: NextPage = () => {
   return (
     <LayoutAdmin>
       <Head>
-        <title>Create Category Utils</title>
+        <title>Create Types Utils</title>
       </Head>
       <h5 className="text-2xl font-extrabold text-gray-700">
-        Create Category Utils page
+        Create Types Utils Page
       </h5>
       <form onSubmit={handleFormSubmitNewProduct}>
         <div className="grid gap-3 mb-6">
